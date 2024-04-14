@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="page-heading">
-        <h3>Category</h3>
+        <h3>Product</h3>
     </div>
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Category: {{ $category->name }}</h4>
+                        <h4 class="card-title">Product: {{ $product->name }}</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -27,19 +27,41 @@
                                     <tbody>
                                     <tr>
                                         <td class="text-bold-500">ID</td>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $product->id }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">NAME</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $product->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">DESCRIPTION</td>
+                                        <td>{!! $product->description !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">PRICE</td>
+                                        <td>{{ $product->price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">STOCK</td>
+                                        <td>{{ $product->stock }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">IMAGE</td>
+                                        <td>
+                                            <img class="w-100" src="{{ asset('storage/' . $product->image_url) }}" alt="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">CATEGORY</td>
+                                        <td>{{ $product->category->name }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">CREATED AT</td>
-                                        <td>{{ $category->created_at->diffForHumans() }}</td>
+                                        <td>{{ $product->created_at->diffForHumans() }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">UPDATED AT</td>
-                                        <td>{{ $category->updated_at->diffForHumans() }}</td>
+                                        <td>{{ $product->updated_at->diffForHumans() }}</td>
                                     </tr>
                                     </tbody>
                                 </table>

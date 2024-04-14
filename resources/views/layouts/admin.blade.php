@@ -73,7 +73,7 @@
 
                     <li
                         class="sidebar-item active ">
-                        <a href="index.html" class='sidebar-link'>
+                        <a href="{{ route('admin.products.index') }}" class='sidebar-link'>
                             <i class="bi bi-list"></i>
                             <span>Products</span>
                         </a>
@@ -134,8 +134,8 @@
 
 
 <!-- Need: Apexcharts -->
-<script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script>
+{{--<script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>--}}
+{{--<script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script>--}}
 
 </body>
 
