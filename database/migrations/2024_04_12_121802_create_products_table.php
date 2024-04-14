@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->integer('stock');
             $table->string('image_url');
-            $table->foreignIdFor(Category::class);
+            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }
