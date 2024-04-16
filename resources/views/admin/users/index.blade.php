@@ -25,6 +25,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>NAME</th>
+                                        <th>EMAIL</th>
                                         <th>SHOW</th>
                                         <th>UPDATE</th>
                                         <th>DELETE</th>
@@ -35,6 +36,7 @@
                                         <tr>
                                             <td class="text-bold-500">{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
                                                 <a href="{{ route('admin.users.show', $user) }}"
                                                    class="btn btn-secondary">Show</a>

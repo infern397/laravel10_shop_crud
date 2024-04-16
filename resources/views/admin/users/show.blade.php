@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="page-heading">
-        <h3>Category</h3>
+        <h3>User</h3>
     </div>
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Category: {{ $category->name }}</h4>
+                        <h4 class="card-title">User: {{ $user->name }}</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -27,19 +27,23 @@
                                     <tbody>
                                     <tr>
                                         <td class="text-bold-500">ID</td>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $user->id }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">NAME</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $user->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">NAME</td>
+                                        <td>{{ $user->email }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">CREATED AT</td>
-                                        <td>{{ $category->created_at->diffForHumans() }}</td>
+                                        <td>{{ $user->created_at->diffForHumans() }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">UPDATED AT</td>
-                                        <td>{{ $category->updated_at->diffForHumans() }}</td>
+                                        <td>{{ $user->updated_at->diffForHumans() }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
