@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -56,6 +57,19 @@ Route::prefix('admin')->group(function () {
                   });
               });
            });
+        });
+        Route::prefix('users')->group(function () {
+            Route::name('users.')->group(function () {
+                Route::controller(UserController::class)->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/create', 'create')->name('create');
+                    Route::post('/', 'store')->name('store');
+                    Route::get('/{user}/edit', 'edit')->name('edit');
+                    Route::get('/{user}', 'show')->name('show');
+                    Route::patch('/{user}', 'update')->name('update');
+                    Route::delete('/{user}', 'destroy')->name('destroy');
+                });
+            });
         });
     });
 });
