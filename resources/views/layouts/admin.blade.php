@@ -72,28 +72,28 @@
                     <li class="sidebar-title">Menu</li>
 
                     <li
-                        class="sidebar-item active ">
+                        class="sidebar-item {{ Request::routeIs('admin.products.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.products.index') }}" class='sidebar-link'>
                             <i class="bi bi-list"></i>
                             <span>Products</span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item {{ Request::routeIs('admin.categories.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.categories.index') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Categories</span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item {{ Request::routeIs('admin.orders.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.orders.index') }}" class='sidebar-link'>
                             <i class="bi bi-cash"></i>
                             <span>Orders</span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item {{ Request::routeIs('admin.users.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
                             <i class="bi bi-people"></i>
                             <span>Users</span>
