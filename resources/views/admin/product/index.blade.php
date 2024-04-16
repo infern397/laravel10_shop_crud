@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
                             <h4 class="card-title w-auto m-0">All Products</h4>
-                            <a href="{{ route('admin.products.create') }}" class="btn btn-primary w-auto">Add</a>
+                            <a href="{{ route('admin.product.create') }}" class="btn btn-primary w-auto">Add</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -42,15 +42,15 @@
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->category->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.products.show', $product) }}"
+                                                <a href="{{ route('admin.product.show', $product) }}"
                                                    class="btn btn-secondary">Show</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.products.edit', $product) }}"
+                                                <a href="{{ route('admin.product.edit', $product) }}"
                                                    class="btn btn-success">Update</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.products.destroy', $product) }}"
+                                                <form action="{{ route('admin.product.destroy', $product) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')

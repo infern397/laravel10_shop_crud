@@ -16,18 +16,18 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.products.index', ['products' => $products]);
+        return view('admin.product.index', ['products' => $products]);
     }
 
     public function show(Product $product)
     {
-        return view('admin.products.show', ['product' => $product]);
+        return view('admin.product.show', ['product' => $product]);
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', ['categories' => $categories]);
+        return view('admin.product.create', ['categories' => $categories]);
     }
 
     public function store(StoreRequest $request)
@@ -35,27 +35,29 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
         Product::query()->create($data);
-        return Redirect::route('admin.products.index');
+        return Redirect::route('admin.product.index');
     }
 
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('admin.products.edit', ['product' => $product, 'categories' => $categories]);
+        return view('admin.product.edit', ['product' => $product, 'categories' => $categories]);
     }
 
     public function update(UpdateRequest $request, Product $product)
     {
         $data = $request->validated();
-        Storage::disk('public')->delete($product->image_url);
-        $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
+        if (isset($request['image_url'])) {
+            Storage::disk('public')->delete($product->image_url);
+            $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
+        }
         $product->update($data);
-        return Redirect::route('admin.products.index');
+        return Redirect::route('admin.product.index');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return Redirect::route('admin.products.index');
+        return Redirect::route('admin.product.index');
     }
 }

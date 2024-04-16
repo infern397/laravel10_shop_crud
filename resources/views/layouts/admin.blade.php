@@ -73,7 +73,7 @@
 
                     <li
                         class="sidebar-item {{ Request::routeIs('admin.products.*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.products.index') }}" class='sidebar-link'>
+                        <a href="{{ route('admin.product.index') }}" class='sidebar-link'>
                             <i class="bi bi-list"></i>
                             <span>Products</span>
                         </a>
