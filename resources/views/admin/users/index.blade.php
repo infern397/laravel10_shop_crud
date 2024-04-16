@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page-heading">
-        <h3>Categories</h3>
+        <h3>Users</h3>
     </div>
     <div class="page-content">
         <section class="row">
@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
-                            <h4 class="card-title w-auto m-0">All Categories</h4>
-                            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary w-auto">Add</a>
+                            <h4 class="card-title w-auto m-0">All Users</h4>
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-primary w-auto">Add</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -31,20 +31,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($users as $user)
                                         <tr>
-                                            <td class="text-bold-500">{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
+                                            <td class="text-bold-500">{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.categories.show', $category) }}"
+                                                <a href="{{ route('admin.users.show', $user) }}"
                                                    class="btn btn-secondary">Show</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.categories.edit', $category) }}"
+                                                <a href="{{ route('admin.users.edit', $user) }}"
                                                    class="btn btn-success">Update</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.categories.destroy', $category) }}"
+                                                <form action="{{ route('admin.users.destroy', $user) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')

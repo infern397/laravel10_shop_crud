@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -13,8 +14,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', ['categories' => $categories]);
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
     }
 
     public function show(Category $category)
@@ -24,7 +25,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.users.create');
     }
 
     public function store(StoreRequest $request)
