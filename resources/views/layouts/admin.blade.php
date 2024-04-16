@@ -80,7 +80,7 @@
                     </li>
                     <li
                         class="sidebar-item {{ Request::routeIs('admin.categories.*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.categories.index') }}" class='sidebar-link'>
+                        <a href="{{ route('admin.category.index') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Categories</span>
                         </a>
