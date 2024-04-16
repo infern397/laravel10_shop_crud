@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
                             <h4 class="card-title w-auto m-0">All Users</h4>
-                            <a href="{{ route('admin.users.create') }}" class="btn btn-primary w-auto">Add</a>
+                            <a href="{{ route('admin.user.create') }}" class="btn btn-primary w-auto">Add</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -38,15 +38,15 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                                <a href="{{ route('admin.users.show', $user) }}"
+                                                <a href="{{ route('admin.user.show', $user) }}"
                                                    class="btn btn-secondary">Show</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.users.edit', $user) }}"
+                                                <a href="{{ route('admin.user.edit', $user) }}"
                                                    class="btn btn-success">Update</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.users.destroy', $user) }}"
+                                                <form action="{{ route('admin.user.destroy', $user) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')

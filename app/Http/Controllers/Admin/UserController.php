@@ -16,40 +16,40 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index', ['users' => $users]);
+        return view('admin.user.index', ['users' => $users]);
     }
 
     public function show(User $user)
     {
-        return view('admin.users.show', ['user' => $user]);
+        return view('admin.user.show', ['user' => $user]);
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.user.create');
     }
 
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
         User::query()->create($data);
-        return Redirect::route('admin.users.index');
+        return Redirect::route('admin.user.index');
     }
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', ['user' => $user]);
+        return view('admin.user.edit', ['user' => $user]);
     }
     public function update(UpdateRequest $request, User $user)
     {
         $data = $request->validated();
         $user->update($data);
-        return Redirect::route('admin.users.index');
+        return Redirect::route('admin.user.index');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return Redirect::route('admin.users.index');
+        return Redirect::route('admin.user.index');
     }
 }

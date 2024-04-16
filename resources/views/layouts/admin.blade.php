@@ -94,7 +94,7 @@
                     </li>
                     <li
                         class="sidebar-item {{ Request::routeIs('admin.users.*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
+                        <a href="{{ route('admin.user.index') }}" class='sidebar-link'>
                             <i class="bi bi-people"></i>
                             <span>Users</span>
                         </a>
