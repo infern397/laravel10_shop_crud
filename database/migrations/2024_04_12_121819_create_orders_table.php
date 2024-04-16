@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('customer_name');
             $table->string('customer_email');
-            $table->decimal('total');
             $table->timestamps();
         });
     }
