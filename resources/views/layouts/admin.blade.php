@@ -87,7 +87,7 @@
                     </li>
                     <li
                         class="sidebar-item">
-                        <a href="index.html" class='sidebar-link'>
+                        <a href="{{ route('admin.orders.index') }}" class='sidebar-link'>
                             <i class="bi bi-cash"></i>
                             <span>Orders</span>
                         </a>
