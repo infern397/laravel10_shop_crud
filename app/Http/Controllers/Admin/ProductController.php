@@ -47,8 +47,10 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         $data = $request->validated();
-        Storage::disk('public')->delete($product->image_url);
-        $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
+        if (isset($request['image_url'])) {
+            Storage::disk('public')->delete($product->image_url);
+            $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
+        }
         $product->update($data);
         return Redirect::route('admin.products.index');
     }
