@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
                             <h4 class="card-title w-auto m-0">All Categories</h4>
-                            <a href="{{ route('admin.category.create') }}" class="btn btn-primary w-auto">Add</a>
+                            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary w-auto">Add</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -36,15 +36,15 @@
                                             <td class="text-bold-500">{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.category.show', $category) }}"
+                                                <a href="{{ route('admin.categories.show', $category) }}"
                                                    class="btn btn-secondary">Show</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.category.edit', $category) }}"
+                                                <a href="{{ route('admin.categories.edit', $category) }}"
                                                    class="btn btn-success">Update</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.category.destroy', $category) }}"
+                                                <form action="{{ route('admin.categories.destroy', $category) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')

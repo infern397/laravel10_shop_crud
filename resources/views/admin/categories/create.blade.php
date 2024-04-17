@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form action="{{ route('admin.category.store') }}" method="POST"
+                            <form action="{{ route('admin.categories.store') }}" method="POST"
                                   class="form form-horizontal">
                                 @csrf
                                 <div class="form-body">

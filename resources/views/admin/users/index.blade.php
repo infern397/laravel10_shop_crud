@@ -4,16 +4,16 @@
 
 @section('content')
     <div class="page-heading">
-        <h3>Products</h3>
+        <h3>Users</h3>
     </div>
     <div class="page-content">
         <section class="row">
-            <div class="col-12 col-md-10">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
-                            <h4 class="card-title w-auto m-0">All Products</h4>
-                            <a href="{{ route('admin.product.create') }}" class="btn btn-primary w-auto">Add</a>
+                            <h4 class="card-title w-auto m-0">All Users</h4>
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-primary w-auto">Add</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -25,32 +25,28 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>NAME</th>
-                                        <th>PRICE</th>
-                                        <th>STOCK</th>
-                                        <th>CATEGORY</th>
+                                        <th>EMAIL</th>
                                         <th>SHOW</th>
                                         <th>UPDATE</th>
                                         <th>DELETE</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($products as $product)
+                                    @foreach($users as $user)
                                         <tr>
-                                            <td class="text-bold-500">{{ $product->id }}</td>
-                                            <td>{{ $product->name }}</td>
-                                            <td>{{ $product->price }}</td>
-                                            <td>{{ $product->stock }}</td>
-                                            <td>{{ $product->category->name }}</td>
+                                            <td class="text-bold-500">{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
-                                                <a href="{{ route('admin.product.show', $product) }}"
+                                                <a href="{{ route('admin.users.show', $user) }}"
                                                    class="btn btn-secondary">Show</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.product.edit', $product) }}"
+                                                <a href="{{ route('admin.users.edit', $user) }}"
                                                    class="btn btn-success">Update</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('admin.product.destroy', $product) }}"
+                                                <form action="{{ route('admin.users.destroy', $user) }}"
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')
