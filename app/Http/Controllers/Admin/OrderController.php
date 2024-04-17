@@ -58,21 +58,4 @@ class OrderController extends Controller
         return Redirect::route('admin.orders.index');
     }
 
-    public function addProduct(Order $order, Product $product, AddProductRequest $request)
-    {
-        $order->products()->attach($product->id, ['quantity' => $request['quantity']]);
-        return Redirect::back();
-    }
-
-    public function updateProduct(Order $order, Product $product, AddProductRequest $request)
-    {
-        $order->products()->syncWithoutDetaching([$product->id => ['quantity' => $request['quantity']]]);
-        return Redirect::back();
-    }
-
-    public function removeProduct(Order $order, Product $product)
-    {
-        $order->products()->detach($product->id);
-        return Redirect::back();
-    }
 }
