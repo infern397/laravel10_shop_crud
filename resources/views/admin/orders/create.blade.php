@@ -7,6 +7,11 @@
         <h3>Create Order</h3>
     </div>
     <div class="page-content">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.orders.index') }}">Orders</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add order</li>
+        </ol>
         <section class="row">
             <div class="col-md-6 col-12">
                 <div class="card">

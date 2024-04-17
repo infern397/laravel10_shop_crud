@@ -7,6 +7,11 @@
         <h3>Product</h3>
     </div>
     <div class="page-content">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.products.index') }}">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+        </ol>
         <section class="row">
             <div class="col-12 col-md-6">
                 <div class="card">
