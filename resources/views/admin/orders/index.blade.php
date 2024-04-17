@@ -7,6 +7,10 @@
         <h3>Orders</h3>
     </div>
     <div class="page-content">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Orders</li>
+        </ol>
         <section class="row">
             <div class="col-12 col-md-8">
                 <div class="card">
