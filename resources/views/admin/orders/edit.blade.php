@@ -84,6 +84,9 @@
                                                         <label for="">Count</label>
                                                         <input class="form-control" name="quantity" type="number"
                                                                value="{{ $product->pivot->quantity }}">
+                                                        @error('quantity_' . $product->id)
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <input type="submit" class="btn btn-success" value="Update">
                                                 </form>
@@ -117,6 +120,9 @@
                                                     <div class="">
                                                         <label for="">Count</label>
                                                         <input name="quantity" class="form-control" type="number">
+                                                        @error('quantity_' . $product->id)
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                     <input type="submit" class="btn btn-success" value="Add">
                                                 </form>

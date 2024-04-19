@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Order\Product;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -23,6 +25,16 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'quantity' => 'integer|required',
+            'product' => 'integer|exists:products,id'
         ];
+    }
+
+    public function withValidator (Validator $validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->quantity > $this->product->stock) {
+                $validator->errors()->add('quantity_' . $this->product->id, 'Quantity exceeds stock');
+            }
+        });
     }
 }
