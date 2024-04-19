@@ -32,7 +32,7 @@
                                             <input type="text" id="first-name-horizontal" class="form-control"
                                                    name="customer_name" placeholder="Name">
                                         </div>
-                                        @error('customer_name')
+                                        @error('quantity')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                         <div class="col-md-4">
