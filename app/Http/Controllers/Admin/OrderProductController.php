@@ -7,35 +7,37 @@ use App\Http\Requests\Order\Product\AddProductRequest;
 use App\Http\Requests\Order\Product\UpdateProductRequest;
 use App\Models\Order;
 use App\Models\Product;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class OrderProductController extends Controller
 {
+    private OrderService $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+    }
+
     public function store(AddProductRequest $request, Order $order)
     {
         $data = $request->validated();
-        $order->products()->attach($data['product'], ['quantity' => $data['quantity']]);
-        $product = Product::query()->findOrFail($data['product']);
-        $product->decrement('stock', $data['quantity']);
+        $this->orderService->addProduct($order, $data['product'], $data['quantity']);
         return Redirect::back();
     }
 
     public function destroy(Order $order, Product $product)
     {
-        $quantity = $order->products()->withPivot('quantity')->findOrFail($product->id)->pivot->quantity;
-        $order->products()->detach($product->id);
-        $product->increment('stock', $quantity);
+        $this->orderService->removeProduct($order, $product);
         return Redirect::back();
 
     }
 
     public function update(UpdateProductRequest $request, Order $order, Product $product)
     {
-        $prevQuantity = $order->products()->withPivot('quantity')->findOrFail($product->id)->pivot->quantity;
-        $order->products()->syncWithoutDetaching([$product->id => ['quantity' => $request['quantity']]]);
-        $product->increment('stock', $prevQuantity - $request['quantity']);
-        $product->save();
+        $data = $request->validated();
+        $this->orderService->updateProduct($order, $product, $data['quantity']);
         return Redirect::back();
     }
 }
