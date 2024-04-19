@@ -23,6 +23,7 @@ class AddProductRequest extends FormRequest
     {
         return [
             'quantity' => 'integer|required',
+            'product' => 'integer|exists:products,id'
         ];
     }
 }

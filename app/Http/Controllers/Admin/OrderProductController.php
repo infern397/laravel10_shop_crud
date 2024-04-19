@@ -14,28 +14,27 @@ class OrderProductController extends Controller
 {
     public function store(AddProductRequest $request, Order $order)
     {
-        $order->products()->attach($request['product'], ['quantity' => $request['quantity']]);
-        $product = Product::query()->find($request['product']);
-        $product->stock -= $request['quantity'];
-        $product->save();
+        $data = $request->validated();
+        $order->products()->attach($data['product'], ['quantity' => $data['quantity']]);
+        $product = Product::query()->findOrFail($data['product']);
+        $product->decrement('stock', $data['quantity']);
         return Redirect::back();
     }
 
     public function destroy(Order $order, Product $product)
     {
-        $quantity = $order->products()->withPivot('quantity')->find($product->id)->pivot->quantity;
+        $quantity = $order->products()->withPivot('quantity')->findOrFail($product->id)->pivot->quantity;
         $order->products()->detach($product->id);
-        $product->stock += $quantity;
-        $product->save();
+        $product->increment('stock', $quantity);
         return Redirect::back();
 
     }
 
     public function update(UpdateProductRequest $request, Order $order, Product $product)
     {
-        $prevQuantity = $order->products()->withPivot('quantity')->find($product->id)->pivot->quantity;
+        $prevQuantity = $order->products()->withPivot('quantity')->findOrFail($product->id)->pivot->quantity;
         $order->products()->syncWithoutDetaching([$product->id => ['quantity' => $request['quantity']]]);
-        $product->stock += $prevQuantity - $request['quantity'];
+        $product->increment('stock', $prevQuantity - $request['quantity']);
         $product->save();
         return Redirect::back();
     }
