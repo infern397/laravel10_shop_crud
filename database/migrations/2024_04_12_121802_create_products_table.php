@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price');
             $table->integer('stock');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });

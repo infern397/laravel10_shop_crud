@@ -23,5 +23,9 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client.welcome');
+});
+
+Route::get('/products', function () {
+    return view('client.index');
 });
