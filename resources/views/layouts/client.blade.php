@@ -12,7 +12,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
 
 </head>
@@ -22,13 +21,18 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Store</a>
+        <a class="navbar-brand" href="{{ route('client.index') }}">Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.cart') }}">Корзина
+                        <i class="fa fa-shopping-cart"></i></a>
+
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="products.html">Каталог <i class="fas fa-shopping-bag"></i> </a>
                 </li>
