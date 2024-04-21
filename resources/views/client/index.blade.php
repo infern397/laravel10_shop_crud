@@ -66,7 +66,13 @@
                                     <p class="card-text">{{ $product->description }}</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
+                                    <form class="" method="POST"
+                                          action="{{ route('client.cart.store') }}">
+                                        @csrf
+                                        <input type="text" hidden="hidden" name="product" value="{{ $product->id }}">
+                                        <input type="text" hidden="hidden" name="quantity" value="{{ 1 }}">
+                                        <input class="btn btn-outline-success" type="submit" value="Отправить в корзину">
+                                    </form>
                                 </div>
                             </div>
                         </div>
