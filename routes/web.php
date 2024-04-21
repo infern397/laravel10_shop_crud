@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderProductController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -22,10 +23,9 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::get('/', function () {
-    return view('client.welcome');
-});
-
-Route::get('/products', function () {
-    return view('client.index');
+Route::name('client.')->group(function () {
+    Route::get('/', function () {
+        return view('client.welcome');
+    })->name('welcome');
+    Route::get('/products', [MainController::class, 'index'])->name('index');
 });
