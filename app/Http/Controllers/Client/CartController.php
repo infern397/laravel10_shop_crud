@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Cart\AddInCartRequest;
+use App\Http\Requests\Cart\UpdateInCartRequest;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
@@ -16,7 +17,10 @@ class CartController extends Controller
     public function index()
     {
         $products = session('cart');
-        return view('client.cart', ['products' => $products]);
+        $total = array_sum(array_map(function ($product) {
+            return $product['quantity'] * $product['price'];
+        }, $products));
+        return view('client.cart', ['products' => $products, 'total' => $total]);
     }
 
     public function add(AddInCartRequest $request)
@@ -42,6 +46,24 @@ class CartController extends Controller
         $cart = session('cart');
         if (isset($cart[$product->id])) {
             unset($cart[$product->id]);
+        }
+        session(['cart' => $cart]);
+        return \redirect()->back();
+    }
+
+    public function update(UpdateInCartRequest $request, Product $product,)
+    {
+        $data = $request->validated();
+        $cart = session('cart');
+        if (isset($cart[$product->id])) {
+            $cart[$product->id]['quantity'] = $data['quantity'];
+        } else {
+            $cart[$product->id] = [
+                'name' => $product->name,
+                'description' => $product->description,
+                'price' => $product->price,
+                'quantity' => $data['quantity']
+            ];
         }
         session(['cart' => $cart]);
         return \redirect()->back();
