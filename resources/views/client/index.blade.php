@@ -66,13 +66,29 @@
                                     <p class="card-text">{{ $product->description }}</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <form class="" method="POST"
-                                          action="{{ route('client.cart.store') }}">
-                                        @csrf
-                                        <input type="text" hidden="hidden" name="product" value="{{ $product->id }}">
-                                        <input type="text" hidden="hidden" name="quantity" value="{{ 1 }}">
-                                        <input class="btn btn-outline-success" type="submit" value="Отправить в корзину">
-                                    </form>
+                                    @if(!isset(session('cart')[$product->id]))
+                                        <form class="" method="POST"
+                                              action="{{ route('client.cart.store', ['product' => $product]) }}">
+                                            @csrf
+                                            <input type="text" hidden="hidden" name="product"
+                                                   value="{{ $product->id }}">
+                                            <input type="text" hidden="hidden" name="quantity" value="{{ 1 }}">
+                                            <input class="btn btn-outline-success" type="submit"
+                                                   value="Отправить в корзину">
+                                        </form>
+                                    @else
+                                        <form class="" method="POST"
+                                              action="{{ route('client.cart.destroy', ['product' => $product]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="text" hidden="hidden" name="product"
+                                                   value="{{ $product->id }}">
+                                            <input type="text" hidden="hidden" name="quantity" value="{{ 1 }}">
+                                            <input class="btn btn-outline-danger" type="submit"
+                                                   value="Убрать из козины">
+                                        </form>
+
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -40,8 +40,6 @@ class CartController extends Controller
     public function destroy(Product $product)
     {
         $cart = session('cart');
-//        dd($product->id);
-//        dd($cart);
         if (isset($cart[$product->id])) {
             unset($cart[$product->id]);
         }
