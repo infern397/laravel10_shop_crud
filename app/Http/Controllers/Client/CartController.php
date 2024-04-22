@@ -9,11 +9,19 @@ use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
+    private CartService $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function index()
     {
         $products = session('cart');
@@ -27,45 +35,20 @@ class CartController extends Controller
     {
         $data = $request->validated();
         $product = Product::query()->findOrFail($data['product']);
-        $cart = session('cart');
-        if (!isset($cart)) {
-            $cart = [];
-        }
-        $cart[$product->id] = [
-            'name' => $product->name,
-            'description' => $product->description,
-            'price' => $product->price,
-            'quantity' => $data['quantity']
-        ];
-        session(['cart' => $cart]);
+        $this->cartService->addProduct($product, $data['quantity']);
         return \redirect()->back();
     }
 
     public function destroy(Product $product)
     {
-        $cart = session('cart');
-        if (isset($cart[$product->id])) {
-            unset($cart[$product->id]);
-        }
-        session(['cart' => $cart]);
+        $this->cartService->removeProduct($product->id);
         return \redirect()->back();
     }
 
     public function update(UpdateInCartRequest $request, Product $product,)
     {
         $data = $request->validated();
-        $cart = session('cart');
-        if (isset($cart[$product->id])) {
-            $cart[$product->id]['quantity'] = $data['quantity'];
-        } else {
-            $cart[$product->id] = [
-                'name' => $product->name,
-                'description' => $product->description,
-                'price' => $product->price,
-                'quantity' => $data['quantity']
-            ];
-        }
-        session(['cart' => $cart]);
+        $this->cartService->updateProduct($product, $data['quantity']);
         return \redirect()->back();
     }
 }
