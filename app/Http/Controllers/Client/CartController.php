@@ -31,7 +31,7 @@ class CartController extends Controller
         return view('client.cart', ['products' => $products, 'total' => $total]);
     }
 
-    public function add(AddInCartRequest $request)
+    public function store(AddInCartRequest $request)
     {
         $data = $request->validated();
         $product = Product::query()->findOrFail($data['product']);

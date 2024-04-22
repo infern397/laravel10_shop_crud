@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('client.cart') }}">Корзина
+                    <a class="nav-link" href="{{ route('client.cart.index') }}">Корзина
                         <i class="fa fa-shopping-cart"></i></a>
 
                 </li>
