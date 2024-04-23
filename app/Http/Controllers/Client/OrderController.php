@@ -23,12 +23,7 @@ class OrderController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $order = Order::query()->create($data);
-        $products = $this->cartService->getProducts();
-        foreach ($products as $id => $product) {
-            $this->orderService->addProduct($order, $id, $product['quantity']);
-        }
-        $this->cartService->clear();
+        $this->orderService->createOrder($data);
         return view('client.order.success');
     }
 
