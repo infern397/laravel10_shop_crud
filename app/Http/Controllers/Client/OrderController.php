@@ -27,7 +27,7 @@ class OrderController extends Controller
         return view('client.order.index', ['order' => $order, 'products' => $products]);
     }
 
-    public function orders()
+    public function list()
     {
         $orders = Order::query()->where('customer_email', Auth::user()->email)->get();
         return view('client.orders', ['orders' => $orders]);

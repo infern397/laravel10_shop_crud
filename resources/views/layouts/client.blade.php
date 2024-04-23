@@ -49,7 +49,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="{{ route('client.user.index') }}">Профиль</a>
+                            <a class="dropdown-item" href="{{ route('client.profile.index') }}">Профиль</a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('client.order.list') }}">Заказы</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.index') }}">Админ-панель</a></li>
