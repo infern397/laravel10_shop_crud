@@ -11,6 +11,7 @@ Route::name('client.')->group(function () {
     })->name('welcome');
     Route::get('/products', [MainController::class, 'index'])->name('index');
     Route::get('/products/{category}', [MainController::class, 'category'])->name('category');
+    Route::get('/profile', [MainController::class, 'profile'])->name('profile');
     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {

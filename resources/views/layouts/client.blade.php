@@ -34,11 +34,14 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('client.index') }}">Каталог <i class="fas fa-shopping-bag"></i> </a>
+                    <a class="nav-link" href="{{ route('client.index') }}">Каталог <i class="fas fa-shopping-bag"></i>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Войти <i class="fas fa-sign-in-alt"></i></a>
-                </li>
+                @if(!Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Войти <i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,19 +49,21 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="users/profile.html">Профиль</a>
+                            <a class="dropdown-item" href="{{ route('client.profile') }}">Профиль</a>
                         </li>
                         <li><a class="dropdown-item" href="orders/orders.html">Заказы</a></li>
                         <li><a class="dropdown-item" href="#">Админ-панель</a></li>
+                        @if(!Auth::check())
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <input type="submit" class="dropdown-item" value="Выйти">
-                            </form>
-                        </li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <input type="submit" class="dropdown-item" value="Выйти">
+                                </form>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             </ul>
