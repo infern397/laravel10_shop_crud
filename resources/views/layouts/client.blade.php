@@ -49,11 +49,11 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="{{ route('client.profile') }}">Профиль</a>
+                            <a class="dropdown-item" href="{{ route('client.user.index') }}">Профиль</a>
                         </li>
                         <li><a class="dropdown-item" href="orders/orders.html">Заказы</a></li>
-                        <li><a class="dropdown-item" href="#">Админ-панель</a></li>
-                        @if(!Auth::check())
+                        <li><a class="dropdown-item" href="{{ route('admin.index') }}">Админ-панель</a></li>
+                        @if(Auth::check())
                         <li>
                             <hr class="dropdown-divider">
                         </li>

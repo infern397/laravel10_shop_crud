@@ -27,10 +27,4 @@ class MainController extends Controller
         $products = $category->products()->paginate(12);
         return view('client.index', ['categories' => $categories, 'products' => $products]);
     }
-
-    public function profile()
-    {
-        $user = Auth::user();
-        return view('client.profile', ['user' => $user]);
-    }
 }
