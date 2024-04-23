@@ -26,11 +26,25 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for="first-name-horizontal">Customer Name</label>
+                                            <label for="first-name-horizontal">Customer FirstName</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="first-name-horizontal" class="form-control"
-                                                   name="customer_name" placeholder="Name">
+                                                   name="customer_firstname" placeholder="Firstname">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Customer LastName</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="customer_lastname" placeholder="Lastname">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Customer Address</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="customer_address" placeholder="Address">
                                         </div>
                                         @error('quantity')
                                         <div class="text-danger">{{ $message }}</div>

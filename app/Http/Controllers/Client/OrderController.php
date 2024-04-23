@@ -13,7 +13,7 @@ use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class CartController extends Controller
+class OrderController extends Controller
 {
     private CartService $cartService;
 
@@ -22,33 +22,13 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
-    public function index()
+    public function store(Request $request)
     {
-        $products = session('cart', []);
-        $total = array_sum(array_map(function ($product) {
-            return $product['quantity'] * $product['price'];
-        }, $products));
-        return view('client.cart', ['products' => $products, 'total' => $total]);
-    }
-
-    public function store(AddInCartRequest $request)
-    {
+        dd($request);
         $data = $request->validated();
         $product = Product::query()->findOrFail($data['product']);
         $this->cartService->addProduct($product, $data['quantity']);
         return \redirect()->back();
     }
 
-    public function destroy(Product $product)
-    {
-        $this->cartService->removeProduct($product->id);
-        return \redirect()->back();
-    }
-
-    public function update(UpdateInCartRequest $request, Product $product,)
-    {
-        $data = $request->validated();
-        $this->cartService->updateProduct($product, $data['quantity']);
-        return \redirect()->back();
-    }
 }

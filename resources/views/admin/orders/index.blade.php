@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active" aria-current="page">Orders</li>
         </ol>
         <section class="row">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
@@ -28,8 +28,10 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>CUSTOMER NAME</th>
+                                        <th>CUSTOMER FIRSTNAME</th>
+                                        <th>CUSTOMER LASTNAME</th>
                                         <th>CUSTOMER EMAIL</th>
+                                        <th>CUSTOMER ADDRESS</th>
                                         <th>TOTAL COST</th>
                                         <th>SHOW</th>
                                         <th>UPDATE</th>
@@ -40,8 +42,10 @@
                                     @foreach($orders as $order)
                                         <tr>
                                             <td class="text-bold-500">{{ $order->id }}</td>
-                                            <td>{{ $order->customer_name }}</td>
+                                            <td>{{ $order->customer_firstname }}</td>
+                                            <td>{{ $order->customer_lastname }}</td>
                                             <td>{{ $order->customer_email }}</td>
+                                            <td>{{ $order->customer_address }}</td>
                                             <td>{{ $order->total }}</td>
                                             <td>
                                                 <a href="{{ route('admin.orders.show', $order) }}"

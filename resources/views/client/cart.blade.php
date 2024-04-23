@@ -56,7 +56,7 @@
                     <h4 class="float-right">{{ $total }} $</h4>
                 </div>
             </div>
-            <a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
+            <a class="btn btn-success btn-lg float-right" href="{{ route('client.order.create') }}">
                 Оформить заказ
             </a>
         </div>
