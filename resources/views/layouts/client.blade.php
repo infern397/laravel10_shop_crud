@@ -54,9 +54,10 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
-                                Выйти
-                            </a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input type="submit" class="dropdown-item" value="Выйти">
+                            </form>
                         </li>
                     </ul>
                 </li>
