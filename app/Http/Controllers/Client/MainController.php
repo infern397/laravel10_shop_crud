@@ -20,5 +20,11 @@ class MainController extends Controller
         return view('client.index', ['categories' => $categories, 'products' => $products]);
     }
 
+    public function category(Category $category)
+    {
+        $categories = Category::all();
+        $products = $category->products()->paginate(12);
+        return view('client.index', ['categories' => $categories, 'products' => $products]);
+    }
 
 }
