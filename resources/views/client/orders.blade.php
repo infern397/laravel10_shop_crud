@@ -25,7 +25,7 @@
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->total }} руб.</td>
                                 <td>
-                                    <a href="order.html">просмотреть</a>
+                                    <a href="{{ route('client.order.index', ['order' => $order]) }}">просмотреть</a>
                                 </td>
                             </tr>
                         @endforeach

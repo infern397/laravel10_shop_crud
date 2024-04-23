@@ -16,6 +16,7 @@ Route::name('client.')->group(function () {
     Route::patch('/profile', [UserController::class, 'update'])->name('user.update');
     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
     Route::get('/orders/', [OrderController::class, 'orders'])->name('order.list');
+    Route::get('/orders/{order}', [OrderController::class, 'index'])->name('order.index');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
         Route::get('/', 'index')->name('index');
