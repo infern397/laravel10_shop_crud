@@ -10,7 +10,7 @@ Route::name('client.')->group(function () {
         return view('client.welcome');
     })->name('welcome');
     Route::get('/products', [MainController::class, 'index'])->name('index');
-    Route::get('/order/create', [MainController::class, 'create'])->name('order.create');
+    Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
         Route::get('/', 'index')->name('index');

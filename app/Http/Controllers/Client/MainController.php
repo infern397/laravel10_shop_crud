@@ -7,6 +7,7 @@ use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,12 +20,5 @@ class MainController extends Controller
         return view('client.index', ['categories' => $categories, 'products' => $products]);
     }
 
-    public function create()
-    {
-        $products = session('cart', []);
-        $total = array_sum(array_map(function ($product) {
-            return $product['quantity'] * $product['price'];
-        }, $products));
-        return view('client.order.create', ['products' => $products, 'total' => $total]);
-    }
+
 }

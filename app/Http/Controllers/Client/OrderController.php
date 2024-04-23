@@ -3,32 +3,40 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Cart\AddInCartRequest;
-use App\Http\Requests\Cart\UpdateInCartRequest;
-use App\Http\Requests\Category\StoreRequest;
-use App\Http\Requests\Category\UpdateRequest;
-use App\Models\Category;
+use App\Http\Requests\Order\StoreRequest;
+use App\Models\Order;
 use App\Models\Product;
 use App\Services\CartService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use App\Services\OrderService;
 
 class OrderController extends Controller
 {
     private CartService $cartService;
+    private OrderService $orderService;
 
-    public function __construct(CartService $cartService)
+    public function __construct(CartService $cartService, OrderService $orderService)
     {
         $this->cartService = $cartService;
+        $this->orderService = $orderService;
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        dd($request);
         $data = $request->validated();
-        $product = Product::query()->findOrFail($data['product']);
-        $this->cartService->addProduct($product, $data['quantity']);
-        return \redirect()->back();
+        $order = Order::query()->create($data);
+        $products = $this->cartService->getProducts();
+        foreach ($products as $id => $product) {
+            $this->orderService->addProduct($order, $id, $product['quantity']);
+        }
+        $this->cartService->clear();
+        return view('client.order.success');
+    }
+
+    public function create()
+    {
+        $products = $this->cartService->getProducts();
+        $total = $this->cartService->getTotal();
+        return view('client.order.create', ['products' => $products, 'total' => $total]);
     }
 
 }
