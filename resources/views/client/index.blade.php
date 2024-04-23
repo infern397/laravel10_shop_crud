@@ -11,7 +11,7 @@
                 <h1 class="my-4">Store</h1>
                 <div class="list-group">
                     @foreach($categories as $category)
-                        <a href="#" class="list-group-item">{{ $category->name }}</a>
+                        <a href="{{ route('client.category', ['category' => $category]) }}" class="list-group-item {{ $category == Route::current()->parameter('category') ? 'list-group-item-dark' : '' }}">{{ $category->name }}</a>
                     @endforeach
                 </div>
 
