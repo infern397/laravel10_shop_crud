@@ -35,12 +35,20 @@
                                         <td>{{ $order->id }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold-500">CUSTOMER NAME</td>
-                                        <td>{{ $order->customer_name }}</td>
+                                        <td class="text-bold-500">CUSTOMER FIRSTNAME</td>
+                                        <td>{{ $order->customer_firstname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">CUSTOMER LASTNAME</td>
+                                        <td>{{ $order->customer_lastname }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">CUSTOMER EMAIL</td>
                                         <td>{{ $order->customer_email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">CUSTOMER ADDRESS</td>
+                                        <td>{{ $order->customer_address }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">TOTAL PRICE</td>
