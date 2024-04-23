@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Services\CartService;
 use App\Services\OrderService;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -18,6 +19,18 @@ class OrderController extends Controller
     {
         $this->cartService = $cartService;
         $this->orderService = $orderService;
+    }
+
+    public function index(Order $order)
+    {
+        $products = $order->products()->get();
+        return view('client.order.index', ['order' => $order, 'products' => $products]);
+    }
+
+    public function orders()
+    {
+        $orders = Order::query()->where('customer_email', Auth::user()->email)->get();
+        return view('client.orders', ['orders' => $orders]);
     }
 
     public function store(StoreRequest $request)
