@@ -51,7 +51,7 @@
                         <li>
                             <a class="dropdown-item" href="{{ route('client.user.index') }}">Профиль</a>
                         </li>
-                        <li><a class="dropdown-item" href="orders/orders.html">Заказы</a></li>
+                        <li><a class="dropdown-item" href="{{ route('client.order.list') }}">Заказы</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.index') }}">Админ-панель</a></li>
                         @if(Auth::check())
                         <li>
