@@ -10,14 +10,23 @@ Route::name('client.')->group(function () {
     Route::get('/', function () {
         return view('client.welcome');
     })->name('welcome');
+
     Route::get('/products', [MainController::class, 'index'])->name('index');
     Route::get('/products/{category}', [MainController::class, 'category'])->name('category');
-    Route::get('/profile', [UserController::class, 'index'])->name('user.index');
-    Route::patch('/profile', [UserController::class, 'update'])->name('user.update');
-    Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
-    Route::get('/orders/', [OrderController::class, 'orders'])->name('order.list');
-    Route::get('/orders/{order}', [OrderController::class, 'index'])->name('order.index');
-    Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+
+    Route::middleware('auth')->prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::patch('/', [UserController::class, 'update'])->name('update');
+    });
+
+
+    Route::middleware('auth')->prefix('order')->name('order.')->group(function () {
+        Route::get('/create', [OrderController::class, 'create'])->name('create');
+        Route::get('/', [OrderController::class, 'list'])->name('list');
+        Route::get('/{order}', [OrderController::class, 'index'])->name('index');
+        Route::post('/', [OrderController::class, 'store'])->name('store');
+    });
+
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
