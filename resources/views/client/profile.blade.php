@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h4 class="mt-3 mb-3">Профиль</h4>
-            <form action="{{ route('client.user.update') }}" method="POST">
+            <form action="{{ route('client.profile.update') }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <div class="form-row">

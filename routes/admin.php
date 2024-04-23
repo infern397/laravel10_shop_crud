@@ -5,9 +5,10 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderProductController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Middleware\CheckIsAdmin;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
+Route::middleware(CheckIsAdmin::class)->prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::get('/', function () {
             return view('admin.index');
