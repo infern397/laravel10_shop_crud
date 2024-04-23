@@ -15,6 +15,24 @@ class CartService
         //
     }
 
+    public function getProducts()
+    {
+        return session('cart', []);
+    }
+
+    public function getTotal()
+    {
+        $products = session('cart', []);
+        return array_sum(array_map(function ($product) {
+            return $product['quantity'] * $product['price'];
+        }, $products));
+    }
+
+    public function clear()
+    {
+        session(['cart' => []]);
+    }
+
     public function addProduct(Product $product, int $quantity)
     {
         $product = Product::query()->findOrFail($product->id);

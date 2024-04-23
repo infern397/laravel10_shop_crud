@@ -27,25 +27,47 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for="first-name-horizontal">Customer Name</label>
+                                            <label for="first-name-horizontal">Customer FirstName</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="first-name-horizontal" class="form-control"
-                                                   name="customer_name" placeholder="Name"
-                                                   value="{{ $order->customer_name }}">
+                                                   name="customer_firstname" placeholder="FirstName"
+                                                   value="{{ $order->customer_firstname }}">
                                         </div>
-                                        @error('customer_name')
+                                        @error('customer_firstname')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Customer LastName</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="customer_lastname" placeholder="LastName"
+                                                   value="{{ $order->customer_lastname }}">
+                                        </div>
+                                        @error('customer_lastname')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                         <div class="col-md-4">
                                             <label for="first-name-horizontal">Customer Email</label>
                                         </div>
                                         <div class="col-md-8 form-group">
-                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                            <input type="email" id="first-name-horizontal" class="form-control"
                                                    name="customer_email" placeholder="Email"
                                                    value="{{ $order->customer_email }}">
                                         </div>
                                         @error('customer_email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Customer Address</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="customer_address" placeholder="Address"
+                                                   value="{{ $order->customer_address }}">
+                                        </div>
+                                        @error('customer_address')
                                         <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                         <div class="col-md-4">

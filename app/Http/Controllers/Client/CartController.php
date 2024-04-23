@@ -24,10 +24,8 @@ class CartController extends Controller
 
     public function index()
     {
-        $products = session('cart');
-        $total = array_sum(array_map(function ($product) {
-            return $product['quantity'] * $product['price'];
-        }, $products));
+        $products = $this->cartService->getProducts();
+        $total = $this->cartService->getTotal();
         return view('client.cart', ['products' => $products, 'total' => $total]);
     }
 
