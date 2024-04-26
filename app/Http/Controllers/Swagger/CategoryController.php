@@ -123,6 +123,27 @@ use App\Http\Controllers\Controller;
  *            ),
  *        ),
  *    ),
+ *
+ * @OA\Head(
+ *        path="/api/categories",
+ *        summary="Проверка существования ресурса",
+ *        tags={"Category"},
+ *
+ *        @OA\Response(
+ *            response=200,
+ *            description="Ok",
+ *        ),
+ *    ),
+ * @OA\Options(
+ *         path="/api/categories",
+ *         summary="Получение доступных методов",
+ *         tags={"Category"},
+ *
+ *         @OA\Response(
+ *             response=200,
+ *             description="Ok",
+ *         ),
+ *     ),
  */
 class CategoryController extends Controller
 {
