@@ -94,6 +94,28 @@
                         }
                     }
                 }
+            },
+            "options": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Получение доступных методов",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            },
+            "head": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Проверка существования ресурса",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
             }
         },
         "/api/categories/{category}": {
@@ -221,6 +243,694 @@
                                                 "name": {
                                                     "type": "string",
                                                     "example": "Some name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Список",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some name"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Some description"
+                                                    },
+                                                    "price": {
+                                                        "type": "string",
+                                                        "example": 300
+                                                    },
+                                                    "stock": {
+                                                        "type": "string",
+                                                        "example": 20
+                                                    },
+                                                    "image_url": {
+                                                        "type": "string",
+                                                        "example": "https:\\/\\/via.placeholder.com\\/640x480.png\\/00ee55?text=voluptas"
+                                                    },
+                                                    "category_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Создание",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Some name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Some description"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": 300
+                                    },
+                                    "stock": {
+                                        "type": "integer",
+                                        "example": 20
+                                    },
+                                    "image_url": {
+                                        "type": "file",
+                                        "format": "jpg",
+                                        "example": "test.jpg"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some name"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Some description"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "example": 300
+                                                },
+                                                "stock": {
+                                                    "type": "integer",
+                                                    "example": 20
+                                                },
+                                                "image_url": {
+                                                    "type": "file",
+                                                    "format": "jpg",
+                                                    "example": "images/products/ccS8JvPDfyiePQEuNfSbF5zMJQ6u46cJX0IQ2IB6.png"
+                                                },
+                                                "category_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "options": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Получение доступных методов",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            },
+            "head": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Проверка существования ресурса",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/api/products/{product}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Продукт",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Id продукта",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some name"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Some description"
+                                                },
+                                                "price": {
+                                                    "type": "string",
+                                                    "example": 300
+                                                },
+                                                "stock": {
+                                                    "type": "string",
+                                                    "example": 20
+                                                },
+                                                "image_url": {
+                                                    "type": "string",
+                                                    "example": "https:\\/\\/via.placeholder.com\\/640x480.png\\/00ee55?text=voluptas"
+                                                },
+                                                "category_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Удаление",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Id продукта",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "integer",
+                                            "example": "done"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Создание",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Id продукта",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Some name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Some description"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": 300
+                                    },
+                                    "stock": {
+                                        "type": "integer",
+                                        "example": 20
+                                    },
+                                    "image_url": {
+                                        "type": "file",
+                                        "format": "jpg",
+                                        "example": "test.jpg"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some name"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Some description"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "example": 300
+                                                },
+                                                "stock": {
+                                                    "type": "integer",
+                                                    "example": 20
+                                                },
+                                                "image_url": {
+                                                    "type": "file",
+                                                    "format": "jpg",
+                                                    "example": "images/products/ccS8JvPDfyiePQEuNfSbF5zMJQ6u46cJX0IQ2IB6.png"
+                                                },
+                                                "category_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Список",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some name"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Создание",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "firstname": {
+                                                "type": "string",
+                                                "example": "Some firstname"
+                                            },
+                                            "lastname": {
+                                                "type": "string",
+                                                "example": "Some lastname"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "Some address"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "user@email.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "Some password"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "firstname": {
+                                                    "type": "string",
+                                                    "example": "Some firstname"
+                                                },
+                                                "lastname": {
+                                                    "type": "string",
+                                                    "example": "Some lastname"
+                                                },
+                                                "address": {
+                                                    "type": "string",
+                                                    "example": "Some address"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "user@email.com"
+                                                },
+                                                "password": {
+                                                    "type": "string",
+                                                    "example": "Some password"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "options": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Получение доступных методов",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            },
+            "head": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Проверка существования ресурса",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/api/users/{user}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Пользователь",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "Id пользователя",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "firstname": {
+                                                    "type": "string",
+                                                    "example": "Some firstname"
+                                                },
+                                                "lastname": {
+                                                    "type": "string",
+                                                    "example": "Some lastname"
+                                                },
+                                                "address": {
+                                                    "type": "string",
+                                                    "example": "Some address"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "user@email.com"
+                                                },
+                                                "password": {
+                                                    "type": "string",
+                                                    "example": "Some password"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Удаление",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "Id пользователя",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "integer",
+                                            "example": "done"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Обновление",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "Id пользователя",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "firstname": {
+                                                "type": "string",
+                                                "example": "Some firstname"
+                                            },
+                                            "lastname": {
+                                                "type": "string",
+                                                "example": "Some lastname"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "Some address"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "user@email.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "Some password"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "firstname": {
+                                                    "type": "string",
+                                                    "example": "Some firstname"
+                                                },
+                                                "lastname": {
+                                                    "type": "string",
+                                                    "example": "Some lastname"
+                                                },
+                                                "address": {
+                                                    "type": "string",
+                                                    "example": "Some address"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "user@email.com"
+                                                },
+                                                "password": {
+                                                    "type": "string",
+                                                    "example": "Some password"
                                                 }
                                             },
                                             "type": "object"
