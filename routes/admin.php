@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\CheckIsAdmin;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(CheckIsAdmin::class)->prefix('admin')->group(function () {
+Route::middleware(['verified', CheckIsAdmin::class])->prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::get('/', function () {
             return view('admin.index');
@@ -21,4 +21,4 @@ Route::middleware(CheckIsAdmin::class)->prefix('admin')->group(function () {
         ]);
         Route::resource('users', UserController::class);
     });
-});
+})->middleware(['verified']);

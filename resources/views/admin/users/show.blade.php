@@ -35,12 +35,20 @@
                                         <td>{{ $user->id }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold-500">NAME</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td class="text-bold-500">Firstname</td>
+                                        <td>{{ $user->firstname }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-bold-500">NAME</td>
+                                        <td class="text-bold-500">Lastname</td>
+                                        <td>{{ $user->lastname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">Email</td>
                                         <td>{{ $user->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-bold-500">Address</td>
+                                        <td>{{ $user->address }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-bold-500">CREATED AT</td>
