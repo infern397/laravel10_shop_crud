@@ -27,11 +27,25 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for="first-name-horizontal">Name</label>
+                                            <label for="first-name-horizontal">Firstname</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="first-name-horizontal" class="form-control"
-                                                   name="name" placeholder="Name" value="{{ $user->name }}">
+                                                   name="firstname" placeholder="Firstname" value="{{ $user->firstname }}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Lastname</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="lastname" placeholder="Lastname" value="{{ $user->lastname }}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Address</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="address" placeholder="Address" value="{{ $user->address }}">
                                         </div>
                                         <div class="col-md-4">
                                             <label for="first-name-horizontal">Email</label>

@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active" aria-current="page">Users</li>
         </ol>
         <section class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between align-items-center">
@@ -39,7 +39,7 @@
                                     @foreach($users as $user)
                                         <tr>
                                             <td class="text-bold-500">{{ $user->id }}</td>
-                                            <td>{{ $user->name }}</td>
+                                            <td>{{ "$user->firstname $user->lastname" }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
                                                 <a href="{{ route('admin.users.show', $user) }}"

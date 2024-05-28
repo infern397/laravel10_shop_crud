@@ -26,11 +26,25 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for="first-name-horizontal">Name</label>
+                                            <label for="first-name-horizontal">Firstname</label>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <input type="text" id="first-name-horizontal" class="form-control"
-                                                   name="name" placeholder="Name">
+                                                   name="firstname" placeholder="Firstname">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Lastname</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="lastname" placeholder="Lastname">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="first-name-horizontal">Address</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="first-name-horizontal" class="form-control"
+                                                   name="address" placeholder="Address">
                                         </div>
                                         <div class="col-md-4">
                                             <label for="first-name-horizontal">Email</label>
@@ -38,13 +52,6 @@
                                         <div class="col-md-8 form-group">
                                             <input type="email" id="first-name-horizontal" class="form-control"
                                                    name="email" placeholder="Email">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="first-name-horizontal">Password</label>
-                                        </div>
-                                        <div class="col-md-8 form-group">
-                                            <input type="text" id="first-name-horizontal" class="form-control"
-                                                   name="password" placeholder="Password">
                                         </div>
 
                                         <div class="col-sm-12 d-flex justify-content-end">
