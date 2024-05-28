@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Mail\User\PasswordMail;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -37,5 +38,6 @@ class StoreUserJob implements ShouldQueue
         $this->data['password'] = Hash::make($password);
         $user = User::query()->firstOrCreate($this->data);
         Mail::to($user)->send(new PasswordMail($password));
+        event(new Registered($user));
     }
 }
