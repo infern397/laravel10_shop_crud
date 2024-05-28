@@ -64,14 +64,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        return 'Request data: ' . print_r($request->all(), true);
-//        $data = $request->validated();
-//
-//        if (isset($request['image_url'])) {
-//            Storage::disk('public')->delete($product->image_url);
-//            $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
-//        }
-//        $product->update($data);
+        $data = $request->validated();
+
+        if (isset($request['image_url'])) {
+            Storage::disk('public')->delete($product->image_url);
+            $data['image_url'] = Storage::disk('public')->put('/images/products', $data['image_url']);
+        }
+        $product->update($data);
         return ProductResource::make($product);
     }
 
